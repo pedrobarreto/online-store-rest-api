@@ -1,12 +1,13 @@
-import express from 'express';
-import getUsers from './controllers/usersController';
+import express, { json } from 'express';
+import { createUsers, loggedUsers } from './controllers/usersController';
 import validateBody from './middlewares/userValidation';
+import validateLogin from './middlewares/loginValidation';
 
 const app = express();
 
-app.use(express.json());
-// app.use(express.urlencoded({ extended: true }));
+app.use(json());
 
-app.post('/users/', validateBody, getUsers);
+app.post('/users/', validateBody, createUsers);
+app.post('/login/', validateLogin, loggedUsers);
 
 export default app;

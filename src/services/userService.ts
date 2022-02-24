@@ -1,8 +1,11 @@
-import modelCreateUser from '../models/userModel';
+import model from '../models/userModel';
 
-import { User } from '../interfaces/user';
+import { IUser, Login } from '../interfaces/user';
 
-const createUser = async ({ username, classe, level, password }:User) =>
-  modelCreateUser({ username, classe, level, password });
+export const createUser = async ({ username, classe, level, password }:IUser) =>
+  model.createUser({ username, classe, level, password });
 
-export default createUser;
+export const filterUser = async ({ username, password }:Login) => {
+  const [user] = await model.filterUser({ username, password });
+  return user;
+};
