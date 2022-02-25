@@ -1,20 +1,21 @@
 import dotenv from 'dotenv';
-import jwt from 'jsonwebtoken';
+import { sign, verify } from 'jsonwebtoken';
 
 dotenv.config();
 
 type Token = { id: number | undefined, username:string };
+
 export const signToken = async (body:Token) => 
-  jwt.sign(body, 'trybe', {
+  sign(body, 'trybe', {
     algorithm: 'HS256',
     expiresIn: '1h',
   });
 
-export const decodeToken = async (token:string) => {
+export const decodeToken = async (token:string | undefined) => {
   try {
-    const response = await jwt.verify(token, 'trybe'); 
+    const response = await verify(token as string, 'trybe'); 
     return response;
   } catch (err) {
-    return { message: 'Expired or invalid token' };
+    return false;
   }
 };
