@@ -10,6 +10,19 @@ export interface Login {
   password: string, 
 }
 
+export interface DToken {
+  id?: number, 
+  username?: string, 
+  iat?: number,
+  exp?: number,
+  message: string,
+}
+
+export interface SToken {
+  id: number, 
+  username: string, 
+}
+
 export interface User extends IUser {
   id: number,
 }
