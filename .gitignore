@@ -114,4 +114,5 @@ feedback.md
 .eslintignore
 .eslintrc.json
 /tests
+trybe.yml
 
