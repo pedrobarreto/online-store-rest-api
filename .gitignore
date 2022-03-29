@@ -102,3 +102,16 @@ dist
 
 # TernJS port file
 .tern-port
+
+/cypress
+/.trybe
+/.github
+reporter.json
+cypress.json
+.stylelintignore
+.stylelintrc.json
+feedback.md
+.eslintignore
+.eslintrc.json
+/tests
+
